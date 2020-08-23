@@ -1,0 +1,18 @@
+<h1>{{recipe.title}}</h1>
+<h1>{{recipe.version}}</h1>
+<h1>{{recipe.href}}</h1>
+<h1>{{result}}</h1>
+
+<ul class="result_list">
+  {{#each recipe.results}}
+    <li>{{this.title}}</li>
+    <li>{{this.href}}</li>
+    <li>{{this.ingredients}}</li>
+    <li>
+    	
+	   	 <img src="{{this.thumbnail}}">
+		
+    </li>
+    <br>
+  {{/each}}
+</ul>
