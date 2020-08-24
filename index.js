@@ -15,9 +15,11 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 
-function call_api (finishedAPI, ticker) {
+function call_api (finishedAPI, meal) {
+	console.log(meal)
 //api key request
-let url = 'http://www.recipepuppy.com/api/?q=omelet&p=3';
+let url = 'http://www.recipepuppy.com/api/?q='+meal+"'";
+console.log(url);
 
 //setting up request to Stock API
 request(url, {json: true}, (err, res, body) => {
@@ -32,16 +34,35 @@ request(url, {json: true}, (err, res, body) => {
 	});
 };
 
+//about page route
+app.get('/index.html', (req, res) => {
+	res.render('about');
+});
+//static routs and html files under public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', (req, res) => {
    call_api((doneAPI) => {
    	let results = doneAPI;
-
     	res.render('home', {
     		// Recipe: doneAPI // will render [object object] at this point 
     		recipe: results
     	});
     });
 
+});
+
+app.post('/', (req, res) => {
+	let meal = req.body.foodPick;
+	call_api((doneAPI) => {
+		let results = doneAPI
+   		let check = results.results
+   		console.log('check '+check)
+			res.render('home', {
+				recipe: results,
+    			check: check
+			});
+		}, meal);
 });
 
 //static routs and html files under public folder
