@@ -16,10 +16,10 @@ app.set('view engine', 'handlebars');
 
 
 function call_api (finishedAPI, meal) {
-	console.log(meal)
+	// console.log(meal)
 //api key request
 let url = 'http://www.recipepuppy.com/api/?q='+meal+"'";
-console.log(url);
+// console.log(url);
 
 //setting up request to Stock API
 request(url, {json: true}, (err, res, body) => {
@@ -29,6 +29,8 @@ request(url, {json: true}, (err, res, body) => {
 
 	if (res.statusCode === 200) { //returning body to console on a 200 return
 		console.log(body); //sending body to console
+		console.log("~_*_~_*_~_*_~_*_~_*_~_*_~_*_~");
+		console.log(" ");
 		finishedAPI(body);
 		};
 	});
@@ -57,7 +59,7 @@ app.post('/', (req, res) => {
 	call_api((doneAPI) => {
 		let results = doneAPI
    		let check = results.results
-   		console.log('check '+check)
+   		// console.log('check '+check)
 			res.render('home', {
 				recipe: results,
     			check: check

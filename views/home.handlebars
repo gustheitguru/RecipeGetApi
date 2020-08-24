@@ -1,28 +1,28 @@
 
 <br><br><br>
 
-{{#if check}}
 
-	{{#each recipe.results}}
-		<div class="container">
-		  <div class="row col-11">
-		    <div class="col-9"><h4>{{this.title}}</h4></div>
-			    <div class="col-6">
-				    <ul>
-				    	<li>
-				    		<a href="{{this.href}}" target="_blank">Recipe Link</a>
-				    	</li>
-				    	<li>
-				    		{{this.ingredients}}
-				    	</li>
-				    </ul>
-			    </div>
-		    		<div class="col-4"><img src="{{this.thumbnail}}"></div>
-		  	</div>
-		</div>
-		<br><br><br>
-	{{/each}}
-{{else}}
-	<h1> Please Search</h1>
-
-{{/if}}
+	{{#if check}}
+		{{#each recipe.results}}
+			<div class="container">
+			  <div class="row col-11">
+			    <div class="col-9"><h4>{{this.title}}</h4></div>
+				    <div class="col-6">
+					    <ul>
+					    	<li>
+					    		<a href="{{this.href}}" target="_blank">Recipe Link</a>
+					    	</li>
+					    	<li>
+					    		{{this.ingredients}}
+					    	</li>
+					    </ul>
+				    </div>
+			    		<div class="col-4"><img src="{{this.thumbnail}}"></div>
+			  	</div>
+			</div>
+			<br><br><br>
+		{{/each}}
+	{{else}}
+		<h1> Please Check Spelling</h1>
+	{{/if}}
+</div>
