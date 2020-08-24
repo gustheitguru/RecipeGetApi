@@ -39,7 +39,7 @@ app.get('/index.html', (req, res) => {
 	res.render('about');
 });
 //static routs and html files under public folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/')));
 
 app.get('/', (req, res) => {
    call_api((doneAPI) => {
